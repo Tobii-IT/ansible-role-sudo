@@ -50,3 +50,8 @@
         users: WEBUSERS
         groups: WEBUSERS
     purge_other_sudoers_files: yes
+
+    sudo_sudoers_additional_files:
+      - web
+    sudo_users_web:
+      - name: 'webuser1'

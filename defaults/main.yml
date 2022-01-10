@@ -47,6 +47,8 @@ sudo_sudoers_cmnd_aliases: []
 sudo_sudoers_runas_aliases: []
 # default sudoers file
 sudo_sudoers_file: ansible
+# list for additional sudoers files
+sudo_sudoers_additional_files: []
 # path of the sudoers.d directory
 sudo_sudoers_d_path: /etc/sudoers.d
 # delete other files in `sudo_sudoers_d_path`
