@@ -19,6 +19,7 @@
     sudo_defaults:
       - defaults: env_reset
       - defaults: secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      - defaults: log_host, log_year, logfile="/var/log/sudo.log"
       - name: 'user1'
         defaults: 'requiretty'
       - name: '%group1'
@@ -50,6 +51,12 @@
         users: WEBUSERS
         groups: WEBUSERS
     purge_other_sudoers_files: yes
+
+    sudo_logfiles:
+    - path: /var/log/sudo.log
+      rotate: 7
+      rotate_schedule: weekly
+      #mail_address:
 
     sudo_sudoers_additional_files:
       - web

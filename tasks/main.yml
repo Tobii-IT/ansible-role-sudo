@@ -20,3 +20,10 @@
     - sudo
     - config
     - sudo-config
+
+- import_tasks: logrotate.yml
+  tags:
+    - system
+    - sudo
+    - config
+    - sudo-config 

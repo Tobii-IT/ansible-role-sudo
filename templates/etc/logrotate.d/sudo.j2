@@ -1,0 +1,12 @@
+{{ ansible_managed | comment }}
+{% for logfile in sudo_logfiles|list %}
+{{ logfile.path }}
+{
+  rotate {%+ if logfile.rotate is defined %}{{ logfile.rotate }}{% endif +%}
+  {{ logfile.rotate_schedule|default('weekly') }}
+  {%+ if logfile.mail_address is defined %}mail address {{ logfile.mail_address }}{% endif +%}
+  compress
+  missingok
+  notifempty
+}
+{% endfor %}

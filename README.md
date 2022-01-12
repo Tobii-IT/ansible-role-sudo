@@ -86,7 +86,9 @@ sudo_sudoers_additional_files: []
 sudo_sudoers_d_path: /etc/sudoers.d
 # delete other files in `sudo_sudoers_d_path`
 purge_other_sudoers_files: no
-
+# create logrotate for logfiles
+sudo_sudo_logfiles: []
+# they must be defined inside a default as well if you want sudo to use them
 ```
 
 
@@ -118,6 +120,7 @@ This is an example playbook:
     sudo_defaults:
       - defaults: env_reset
       - defaults: secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      - defaults: log_host, log_year, logfile="/var/log/sudo.log"
       - name: 'user1'
         defaults: 'requiretty'
         #type: user
@@ -151,10 +154,15 @@ This is an example playbook:
         groups: WEBUSERS
     purge_other_sudoers_files: yes
 
+    sudo_logfiles:
+      - path: /var/log/sudo.log
+        rotate: 7
+        rotate_schedule: weekly
+        #mail_address:
     sudo_sudoers_additional_files:
       - web
     sudo_users_web:
-      - name: 'webuser1'
+      - name: 'webuser1'  
 
 ```
 If you are going to make use of sudo_sudoers_additional_files then all the other variables are available like before, but you have to suffix them with the filename.
