@@ -54,5 +54,5 @@ sudo_sudoers_d_path: /etc/sudoers.d
 # delete other files in `sudo_sudoers_d_path`
 purge_other_sudoers_files: no
 # create logrotate for logfiles
-sudo_sudo_logfiles: []
+sudo_logfiles: []
 # they must be defined inside a default as well if you want sudo to use them
