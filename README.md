@@ -90,7 +90,7 @@ purge_other_sudoers_files: no
 sudo_logfiles: []
 # they must be defined inside a default as well if you want sudo to use them
 ```
-
+It is possible for sudo_logfiles to define a rotate value, to define a new schedule or an mail_address. Look into the example below for that.
 
 ## Usage
 
