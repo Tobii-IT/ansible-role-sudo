@@ -2,7 +2,7 @@
 {% for logfile in sudo_logfiles|list %}
 {{ logfile.path }}
 {
-  rotate {%+ if logfile.rotate is defined %}{{ logfile.rotate }}{% endif +%}
+  rotate {{ logfile.rotate|default('24') }}
   {{ logfile.rotate_schedule|default('weekly') }}
   {%+ if logfile.mail_address is defined %}mail address {{ logfile.mail_address }}{% endif +%}
   compress
